@@ -8,7 +8,7 @@ phone = os.environ["USERNAME"]
 passWord = os.environ["PASSWORD"]
 
 def allow():
-    all = requests.get(folder, headers={'Authorization': token}).json()['data']['depots'][0]['name']
+    al = requests.get(folder, headers={'Authorization': token}).json()['data']['depots'][0]['name']
     if al == '1':return True
     else:return False
 
