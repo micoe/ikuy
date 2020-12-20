@@ -2,13 +2,14 @@
 import requests,json,time,re,os
 
 folder = os.environ["FOLDER"]
+token = os.environ["TOKEN"]
 sckey = os.environ["SCKEY"]
 phone = os.environ["USERNAME"]
 passWord = os.environ["PASSWORD"]
 
 def allow():
-    all = requests.get(folder, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0','Referer': 'https://www.lanzous.com/b0ejh22pa', }).text
-    if re.search(r'<title>\d</title>',all).group()[7] == '1':return True
+    all = requests.get(folder, headers={''Authorization': token}).json()['data']['depots'][0]['name']
+    if al == '1':return True
     else:return False
 
 def login():
