@@ -51,6 +51,7 @@ def main_handler(event, context):
             receive()
             while query():
                 time.sleep(3)
+        print(datetime.datetime.now())
         send()
 
 if __name__ == '__main__':
