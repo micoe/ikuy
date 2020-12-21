@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import requests,json,time,re,os
+import requests,json,time,re,os,datetime
 
 folder = os.environ["FOLDER"]
 token = os.environ["TOKEN"]
@@ -44,6 +44,7 @@ def send():
 
 
 def main_handler(event, context):
+    print(datetime.datetime.now())
     if allow():
         login()
         while status():
