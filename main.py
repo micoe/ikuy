@@ -9,7 +9,6 @@ passWord = os.environ["PASSWORD"]
 
 def allow():
     al = requests.get(folder, headers={'Authorization': token}).json()['data']['depots'][0]['name']
-    print(al)
     if str(al) == '1':return True
     else:return False
 
