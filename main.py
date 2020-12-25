@@ -17,8 +17,8 @@ def login():
     global s
     s = requests.session()
     data = {"userName": phone,"passWord": passWord,"uatoken": 'byyaohuoid34976'}
-    l=s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json;charset=utf-8'},data=data)
-    print(l.json()['data']['tbCode'])
+    s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json;charset=utf-8'},data=data)
+    print('登陆成功')
 
 def status():
     st = s.post('https://www.yukizq.com/api/yuki/is_task')
