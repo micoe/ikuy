@@ -16,7 +16,7 @@ def allow():
 def login():
     global s
     s = requests.session()
-    data = {"userName": phone,"passWord": passWord,"uatoken": 'byyaohuoid34976'}
+    data = {"userName": phone,"passWord": passWord,"uatoken": 'f4g5dsf4g854a8r4df54c'}
     l=s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json;charset=utf-8'},data=data)
     print(l.text)
 
