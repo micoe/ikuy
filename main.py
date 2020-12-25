@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import requests,json,time,re,os,datetime
+import requests,datetime,json,time,os
 
 folder = os.environ["FOLDER"]
 token = os.environ["TOKEN"]
