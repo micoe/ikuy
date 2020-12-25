@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
-import requests,datetime,json,time,os
+import requests,json,time,re,os,datetime
 
 folder = os.environ["FOLDER"]
 token = os.environ["TOKEN"]
 push = os.environ["PUSH"]
-sckey = os.environ["SCKEY"]
 phone = os.environ["USERNAME"]
 passWord = os.environ["PASSWORD"]
+
 
 def allow():
     al = requests.get(folder, headers={'Authorization': token}).json()['data']['depots'][0]['name']
@@ -17,7 +17,7 @@ def login():
     global s
     s = requests.session()
     data = {"userName": phone,"passWord": passWord,"uatoken": 'byyaohuoid34976'}
-    s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json;charset=utf-8'},data=data)
+    s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json'},data=json.dumps(data))
     print('登陆成功')
 
 def status():
