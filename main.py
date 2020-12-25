@@ -16,9 +16,9 @@ def allow():
 def login():
     global s
     s = requests.session()
-    data = {"userName": phone,"passWord": passWord,"uatoken": 'f4g5dsf4g854a8r4df54c'}
-    l=s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json;charset=utf-8'},data=data)
-    print(l.text)
+    data = {"userName": phone,"passWord": passWord,"uatoken": 'byyaohuoid34976'}
+    s.post('https://yukizq.com/api/yuki/login', headers={'Content-Type': 'application/json;charset=utf-8'},data=data)
+    print('登陆成功')
 
 def status():
     st = s.post('https://www.yukizq.com/api/yuki/is_task')
