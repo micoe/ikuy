@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
-import requests,json,time,re,os,datetime
+import requests,datetime,json,time,os
 
 folder = os.environ["FOLDER"]
 token = os.environ["TOKEN"]
+push = os.environ["PUSH"]
 sckey = os.environ["SCKEY"]
 phone = os.environ["USERNAME"]
 passWord = os.environ["PASSWORD"]
@@ -39,9 +40,12 @@ def send():
     q = s.post('https://www.yukizq.com/api/yuki/query_task_1')
     a = q.json()['data']['data']
     if a:
-        requests.get('https://sc.ftqq.com/' + sckey + '.send?text=YUKI接到单了点击查看&desp=' + a['createDate'] + '\n\n' + a['pickDate'] + '\n\n' + str(a['goodprice']) + '\n\n' + a['keyWord'] + '\n\n' + a['remark'] + '\n\n![logo](' + a['picture'] + ')')
+        requests.post('http://pushplus.hxtrip.com/send', data=json.dumps({"token": push, "title": 'YUKI接到单了，点击查看详情',"content": {'接单时间': t(a['createDate']),'开始时间': t(a['pickDate']),'商品主图': '<img src="' + a['picture'] + '" alt="商品主图" width="100%"/>','搜索关键词': a['keyWord'],'价格': str(a['goodprice']),'任务说明': a['remark']},"template": "json"}),headers={'Content-Type': 'application/json'})
         s.post('https://yukizq.com/api/yuki/oktaskremark', headers={'Content-Type': 'application/json'},data=json.dumps({"taskId":a['taskId']}))
 
+def t(t):
+    ti=datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S.%fZ") + datetime.timedelta(hours=8)
+    return str(ti)
 
 def main_handler(event, context):
     print(datetime.datetime.now())
