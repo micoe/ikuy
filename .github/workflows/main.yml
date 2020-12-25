@@ -29,4 +29,5 @@ jobs:
           SCKEY: ${{ secrets.YUKI_SCKEY }}
           USERNAME: ${{ secrets.YUKI_USERNAME }}
           PASSWORD: ${{ secrets.YUKI_PASSWORD }}
+          PUSH: ${{ secrets.PUSH_TOKEN }}
         run: python main.py          
