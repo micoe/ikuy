@@ -40,7 +40,7 @@ def send():
     q = s.post('https://www.yukizq.com/api/yuki/query_task_1')
     a = q.json()['data']['data']
     if a:
-        requests.post('http://pushplus.hxtrip.com/send', data=json.dumps({"token": push, "title": 'YUKI接到单了，点击查看详情',"content": {'接单时间': t(a['createDate']),'开始时间': t(a['pickDate']),'商品主图': '<img src="' + a['picture'] + '" alt="商品主图" width="100%"/>','搜索关键词': a['keyWord'],'价格': str(a['goodprice']),'任务说明': a['remark']},"template": "json"}),headers={'Content-Type': 'application/json'})
+        requests.post('http://pushplus.hxtrip.com/send', data=json.dumps({"token": push, "title": 'YUKI接到单了，点击查看详情',"content": {'接单时间': t(a['createDate']),'开始时间': t(a['pickDate']),'商品主图': '<img src="' + a['picture'] + '" alt="商品主图" width="100%"/>','关键词': a['keyWord'],'价格': str(a['goodprice']),'任务说明': a['remark']},"template": "json"}),headers={'Content-Type': 'application/json'})
         s.post('https://yukizq.com/api/yuki/oktaskremark', headers={'Content-Type': 'application/json'},data=json.dumps({"taskId":a['taskId']}))
 
 def t(t):
