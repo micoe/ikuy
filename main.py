@@ -16,7 +16,7 @@ def allow():
 def login():
     try:
         l=s.post('https://www.yukizq.com/api/yuki/login',data={"userName": phone,"passWord": passWord,"uatoken": 'yaohuoid34976'})
-        print(l.json()['data']['tbCode']+'登陆成功')
+        print('登陆成功')
     except:
         print('登陆失败')
         exit()
@@ -41,7 +41,6 @@ def query():
 def send():
     if '未' in st.text:
         a = s.post('https://www.yukizq.com/api/yuki/query_task_1').json()['data']['data']
-        print(a)
         requests.post('http://pushplus.hxtrip.com/send', data=json.dumps({"token": token, "title": 'YUKI接到单了，点击查看详情',"content": {'接单时间': t(a['createDate']),'开始时间': t(a['pickDate']),'接单账号': a['tbCode'],'商品主图': '<img src="' + a['picture'] + '" alt="商品主图" width="100%"/>','关键词': a['keyWord'],'价格': str(a['goodprice']),'任务说明': a['remark']},"template": "json"}),headers={'Content-Type': 'application/json'})
         s.post('https://www.yukizq.com/api/yuki/oktaskremark', headers={'Content-Type': 'application/json'},data=json.dumps({"taskId":a['taskId']}))
     elif '评' in st.text:
