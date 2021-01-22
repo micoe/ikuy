@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import requests,datetime,json,time,os
+import requests,datetime,json,os
 
 folder = os.environ["FOLDER"]
 token = os.environ["TOKEN"]
@@ -62,7 +62,7 @@ def main_handler(event, context):
         while status():
             receive()
             while query():
-                time.sleep(3)
+                pass
         send()
 
 if __name__ == '__main__':
