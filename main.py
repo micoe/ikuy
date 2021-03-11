@@ -2,9 +2,9 @@
 import requests,os
 
 folder = os.environ["FOLDER"]
-Token = os.environ["PUSH"]
+token = os.environ["PUSH"]
 phone = os.environ["USERNAME"]
-password = os.environ["PASSWORD"]
+pwd = os.environ["PASSWORD"]
 
 #--------------以下为代码区，请勿修改！------------#
 def main_handler(event, context):
