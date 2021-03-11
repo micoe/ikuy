@@ -6,7 +6,7 @@ folder = os.environ["FOLDER"]
 token = os.environ["PUSH"]
 phone = os.environ["USERNAME"]
 pwd = os.environ["PASSWORD"]
-
+url = 'http://yycangming.club/home/s_task/'
 #--------------以下为代码区，请勿修改！------------#
 def allow():
     al = requests.get(folder, headers={'User-Agent': 'yaohuoid34976'}).text
