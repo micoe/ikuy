@@ -19,6 +19,7 @@ jobs:
         run: |
          pip install requests
          pip install beautifulsoup4
+         pip install pytz
       - name: 'start'
         env:
           FOLDER: ${{ secrets.YUKI_FOLDER }}
