@@ -17,12 +17,9 @@ jobs:
           python-version: 3.x
       - name: 'install dependencies'
         run: pip install requests
-      
       - name: 'start'
         env:
           FOLDER: ${{ secrets.YUKI_FOLDER }}
-          TOKEN: ${{ secrets.YUKI_TOKEN }}
-          SCKEY: ${{ secrets.YUKI_SCKEY }}
           USERNAME: ${{ secrets.YUKI_USERNAME }}
           PASSWORD: ${{ secrets.YUKI_PASSWORD }}
           PUSH: ${{ secrets.PUSH_TOKEN }}
