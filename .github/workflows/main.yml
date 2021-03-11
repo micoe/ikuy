@@ -16,7 +16,9 @@ jobs:
         with:
           python-version: 3.x
       - name: 'install dependencies'
-        run: pip install requests
+        run: |
+         pip install requests
+         pip install beautifulsoup4
       - name: 'start'
         env:
           FOLDER: ${{ secrets.YUKI_FOLDER }}
