@@ -42,19 +42,25 @@ def login(a):
         return
 
 def check(soup):
+    global black
+    black=[]
     l = BeautifulSoup(soup, 'html.parser').find_all('li')
     for i in l:
+        print('接单次数', c)
         bh=re.search(r'TAS\d+', i.find('div', class_="ui-block-a").get_text()).group()
-        print('接单次数',c)
-        if receive(bh):
-            if inf():return
-            else:return True
+        if bh in black:pass
+        else:
+            if receive(bh):
+                if inf():return
+                else:return True
 
 def receive(taskid):
     for i in tbl:
         m3 = s.post(url + 'doUserTask.do', data=('waigua=12321&xiaohao='+i+'&taskNo=' + taskid).encode('utf-8')).json()
         print(m3)
-        if m3['errorCode']=='0000':return True
+        if m3['errorCode']=='0000':
+            return True
+    black.append(taskid)
     return
 
 def inf():
