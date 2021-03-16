@@ -3,9 +3,9 @@ import requests,datetime,re,json,pytz,os
 from bs4 import BeautifulSoup
 
 folder = os.environ["FOLDER"]
-token = os.environ["PUSH"]
+Token = os.environ["PUSH"]
 phone = os.environ["USERNAME"]
-pwd = os.environ["PASSWORD"]
+password = os.environ["PASSWORD"]
 url = 'http://yycangming.club/home/s_task/'
 #--------------以下为代码区，请勿修改！------------#
 def allow():
@@ -18,7 +18,7 @@ def allow():
 def login(a):
     tb={}
     s.headers={'User-Agent': 'Android','Content-Type': 'application/x-www-form-urlencoded'}
-    s.post(url[:-7]+'dologin.do',data='role=worker&phone='+phone+'&pwd='+pwd)
+    s.post(url[:-7]+'dologin.do',data='role=worker&phone='+phone+'&pwd='+password)
     m6 = s.get(url[:-7] + 'worker/initAcount.do').text
     l = BeautifulSoup(m6, 'html.parser')
     for i in l.ul:
@@ -74,7 +74,7 @@ def inf():
         name = li.find('p', class_='bAcount').get_text()
         key = li.find('p', id='copy_key').get_text()
         print(name, key, bj, yj)
-        requests.post('http://pushplus.hxtrip.com/send', data=json.dumps({"token": token, "title": '(无穷) '+bj+'/'+yj,"content": {'<a href="http://qr61.cn/ogpvAF/qtDE2Ly">Copyright © 2021 初音ミク</a>':'All rights reserved','商品主图': '<img src="' + img + '" alt="商品主图" width="100%"/>','店铺名': name,'关键词': key,'注意': '店铺名仅供平台核对任务，若使用店铺名搜索下单导致的商家返款异常后果自负'},"template": "json"}),headers={'Content-Type': 'application/json'})
+        requests.post('http://www.pushplus.plus/send', data=json.dumps({"token": Token, "title": '(无穷) '+bj+'/'+yj,"content": {'<a href="http://qr61.cn/ogpvAF/qtDE2Ly">Copyright © 2021 初音ミク</a>':'All rights reserved','商品主图': '<img src="' + img + '" alt="商品主图" width="100%"/>','店铺名': name,'关键词': key,'注意': '店铺名仅供平台核对任务，请勿使用店铺名搜索下单'},"template": "json"}),headers={'Content-Type': 'application/json'})
         return
     except:return True
 
